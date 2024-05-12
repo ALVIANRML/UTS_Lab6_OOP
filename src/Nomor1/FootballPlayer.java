@@ -1,4 +1,6 @@
-//class FootballPlayer
+package Nomor1;
+
+//class Nomor1.FootballPlayer
 class FootballPlayer {
     private String name, club, position;
     private int age,salary,goal,assist,appereances;
