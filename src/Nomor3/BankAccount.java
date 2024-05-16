@@ -1,7 +1,7 @@
 package Nomor3;
 
 class BankAccount {
-    private String name, anotherAccount;
+    private String name;
     private int id, balance, amount;
 
     public BankAccount() {
@@ -16,24 +16,31 @@ class BankAccount {
                 "name: " + name);
     }
 
-    public void Account(String keterangan) {
-        System.out.println("Your Account:\n" +
+    @Override
+    public String toString() {
+        return "Your Account:\n" +
                 "ID: " + id + "\n" +
                 "Name: " + name + "\n" +
-                "Balance: $ " + balance);
+                "Balance: $ " + balance;
     }
 
-    public void Credit(){
+    public void Credit(int amount){
         balance = balance + amount;
     }
 
-    public void Debit(){
+    public void Debit(int amount){
         balance = balance - amount;
     }
 
-    public void Transfer(){
-
+    public void TransferTo(BankAccount anotherAccount, int amount) {
+        if (amount <= balance) {
+            this.Debit(amount);
+            anotherAccount.Credit(amount);
+        } else {
+            System.out.println("Amount exceeded balance");
+        }
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -46,6 +53,9 @@ class BankAccount {
 
     public void setId(int id) {
         this.id = id;
+    }
+    public int getId() {
+        return id;
     }
 
 
@@ -60,7 +70,5 @@ class BankAccount {
     public int getBalance(){
         return balance;
     }
-
-
 
 }
